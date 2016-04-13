@@ -1,0 +1,21 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="host">
+		
+	</div>
+	<script>
+		var host = document.querySelector('#host');
+		var root1 = host.createShadowRoot();
+		var root2 = host.createShadowRoot();
+		var root3 = host.createShadowRoot();
+		root1.innerHTML = "capa 1"
+		root2.innerHTML = "capa 2 <shadow></shadow> capa 2 "
+		root3.innerHTML = "capa 3 <shadow></shadow> capa 3 "
+		var subroot = root1.createShadowRoot();
+	</script>
+</body>
+</html>

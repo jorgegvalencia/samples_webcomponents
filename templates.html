@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<template id="news">
+		<div class="title"></div>
+		<img src="">
+		<div class="body"></div>
+	</template>
+	<div id="new-1"></div>
+	<div id="new-2"></div>
+	<script>
+		function createNew(container, news) {
+			var root = document.querySelector(container).createShadowRoot();
+			var template = document.querySelector('#news').content;
+
+			template.querySelector(".title").textContent = news.title;
+			template.querySelector("img").src = news.image;
+			template.querySelector(".body").textContent = news.body;
+
+			root.appendChild(template.cloneNode(true)); // true es recursivo, el elemento y sus hijos
+		}
+
+		var new1 = {
+			title: 'title1',
+			image: 'https://c2.staticflickr.com/8/7306/16407404782_8b9c57eab3.jpg',
+			body: 'noticia-1'
+		};
+
+		var new2 = {
+			title: 'title2',
+			image: 'https://c2.staticflickr.com/8/7306/16407404782_8b9c57eab3.jpg',
+			body: 'noticia-2'
+		};
+
+		createNew('#new-1', new1);
+		createNew('#new-2', new2);
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cart">
+        <div class="food meat"> Cow </div>
+        <div class="dessert food"> Orange </div>
+        <div class="food fish"> Cod </div>
+        <div class="food fruit"> Tomato </div>
+    </div>
+    <script id="template2" type="text">
+    <style>
+    .visit-card {
+        background-image: url("www.placehold.it/350x150/FFC107/000000");
+        border: 1px black solid;
+    }
+    </style>
+    <div class="visit-card">
+        <h1>
+        	Food
+        </h1>
+        <content select=".food"></content>
+        <h1>
+        	Dessert
+        </h1>
+        <content select=".dessert"></content>
+    </div>
+    </script>
+    <script>
+    var host = document.querySelector('#cart');
+    var root = host.createShadowRoot();
+    root.innerHTML = document.querySelector('#template2').innerHTML;
+    </script>
+</body>
+
+</html>

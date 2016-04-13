@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="host">
+        <!-- www.placehold.it/350x150/FFC107/000000 -->
+        <div class="product">
+            <div class="name">Oranges</div>
+            <div class="price">15</div>
+        </div>
+        <div class="product">
+            <div class="name">Gloves</div>
+            <div class="price">30</div>
+        </div>
+    </div>
+    <script id="template" type="text">
+        <div>
+            <content select=".product">Valor por defecto</content>
+        </div>
+        <h1>
+        	Home
+        </h1>
+    </script>
+    <script>
+    var host = document.querySelector('#host');
+    var root = host.createShadowRoot();
+    root.innerHTML = document.querySelector('#template').innerHTML;
+    </script>
+</body>
+
+</html>

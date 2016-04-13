@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .visit-card {
+        background-image: "www.placehold.it/350x150/FFC107/000000";
+        border: 1px black solid;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="host">
+        <!-- www.placehold.it/350x150/FFC107/000000 -->
+        <div class="name">Jorge González</div>
+        <div class="twitter">jorgegvalencia</div>
+    </div>
+    <script id="template" type="text">
+        <style>
+        .visit-card {
+            background-image: "www.placehold.it/350x150/FFC107/000000";
+            border: 1px black solid;
+        }
+        </style>
+        <div class="visit-card">Nombre :
+            <content select=".name"></content>Twitter:
+            <content select=".twitter"></content>
+        </div>
+    </script>
+    <script>
+    var host = document.querySelector('#host');
+    var root = host.createShadowRoot();
+    root.innerHTML = document.querySelector('#template').innerHTML;
+    </script>
+</body>
+
+</html>

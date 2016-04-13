@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="host">
+       
+    </div>
+    <script>
+    var count = 0;
+    var host = document.querySelector('#host');
+    var root = host.createShadowRoot();
+    root.innerHTML = '<button id="btn-plus">+</button><span id="count"></span><button id="btn-minus">-</button>';
+    
+    root.querySelector('#count').innerHTML = count;
+
+    root.querySelector('#btn-plus').addEventListener('click', function() {
+        count++;
+        root.querySelector('#count').innerHTML = count;
+    })
+
+    root.querySelector('#btn-minus').addEventListener('click', function() {
+        count--;
+        root.querySelector('#count').innerHTML = count;
+    })
+
+    </script>
+</body>
+
+</html>

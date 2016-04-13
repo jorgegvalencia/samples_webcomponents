@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <template id="card">
+        <h1></h1>
+        <p></p>
+    </template>
+
+    <wc-card>
+        <wc-card-name>Jorge</wc-card-name>
+        <wc-card-twitter>jorgegvalencia</wc-card-twitter>
+    </wc-card>
+
+    <script>
+    var card = Object.create(HTMLElement.prototype);
+    card.createdCallback = function() {
+        var root = this.createShadowRoot();
+        var template = document.querySelector('#card').content;
+
+        template.querySelector("h1").textContent = this.querySelector('wc-card-name').textContent;
+        template.querySelector("p").textContent = this.querySelector('wc-card-twitter').textContent;
+
+        root.appendChild(template.cloneNode(true));
+    }
+    var Card = document.registerElement('wc-card', {
+        prototype: card
+    });
+    </script>
+</body>
+
+</html>
