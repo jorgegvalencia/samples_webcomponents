@@ -3,31 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="import" href="wc-new.html">
 </head>
 
 <body>
-    <div id="host">
-       
-    </div>
-    <script>
-    var count = 0;
-    var host = document.querySelector('#host');
-    var root = host.createShadowRoot();
-    root.innerHTML = '<button id="btn-plus">+</button><span id="count"></span><button id="btn-minus">-</button>';
-    
-    root.querySelector('#count').innerHTML = count;
-
-    root.querySelector('#btn-plus').addEventListener('click', function() {
-        count++;
-        root.querySelector('#count').innerHTML = count;
-    })
-
-    root.querySelector('#btn-minus').addEventListener('click', function() {
-        count--;
-        root.querySelector('#count').innerHTML = count;
-    })
-
-    </script>
+    <wc-new>
+        <wc-news-title> Titulo de la noticia </wc-news-title>
+        <wc-news-image> https://c2.staticflickr.com/8/7306/16407404782_8b9c57eab3.jpg </wc-news-image>
+        <wc-news-body> Cuerpo de la noticia Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cumque accusantium numquam deserunt in. Nostrum tenetur quas quibusdam repudiandae est atque, fugiat aperiam quia tempora repellat suscipit accusamus aspernatur eos totam obcaecati a, alias pariatur. Dolores, facere soluta enim nesciunt excepturi! Necessitatibus vitae dignissimos quas blanditiis, facilis. Consequuntur, et, magni.
+        </wc-news-body>
+    </wc-new>
+    <wc-new>
+        <wc-news-title> Titulo de la noticia </wc-news-title>
+        <wc-news-image> https://c2.staticflickr.com/8/7306/16407404782_8b9c57eab3.jpg </wc-news-image>
+        <wc-news-body> Cuerpo de la noticia Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cumque accusantium numquam deserunt in. Nostrum tenetur quas quibusdam repudiandae est atque, fugiat aperiam quia tempora repellat suscipit accusamus aspernatur eos totam obcaecati a, alias pariatur. Dolores, facere soluta enim nesciunt excepturi! Necessitatibus vitae dignissimos quas blanditiis, facilis. Consequuntur, et, magni.
+        </wc-news-body>
+    </wc-new>
+    <wc-new>
+        <wc-news-title> Titulo de la noticia </wc-news-title>
+        <wc-news-image> https://c2.staticflickr.com/8/7306/16407404782_8b9c57eab3.jpg </wc-news-image>
+        <wc-news-body> Cuerpo de la noticia Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cumque accusantium numquam deserunt in. Nostrum tenetur quas quibusdam repudiandae est atque, fugiat aperiam quia tempora repellat suscipit accusamus aspernatur eos totam obcaecati a, alias pariatur. Dolores, facere soluta enim nesciunt excepturi! Necessitatibus vitae dignissimos quas blanditiis, facilis. Consequuntur, et, magni.
+        </wc-news-body>
+    </wc-new>
 </body>
 
 </html>

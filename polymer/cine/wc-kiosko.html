@@ -1,0 +1,32 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<dom-module id="wc-kiosko">
+    <template id="kiosko">
+        <style>
+        .kiosko {
+            text-align: center;
+        }
+        </style>
+        <div class="kiosko">
+            <h1 id="name"><span>{{ name }}</span></h1>
+            <div id="ticketList"></div>
+        </div>
+    </template>
+    <script>
+    (function() {
+        var tickets = [];
+        Polymer({
+            is: 'wc-kiosko',
+            properties: {
+                name: {
+                    type: String,
+                    value: 'Kiosko'
+                },
+                ticketList: tickets,
+                addTicket: function (ticket) {
+                    tickets.push(ticket);
+                }
+            }
+        });
+    })();
+    </script>
+</dom-module>

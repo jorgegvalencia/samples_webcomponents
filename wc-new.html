@@ -1,0 +1,30 @@
+<template id="news">
+	<style>
+		.title{
+			color: tomato;
+		}
+	</style>
+    <h1 class="title"></h1>
+    <img src="">
+    <p class="body"></p>
+</template>
+<script>
+(function() {
+    var doc = document.currentScript.ownerDocument;
+    var newsitem = Object.create(HTMLElement.prototype);
+    newsitem.createdCallback = function() {
+        var root = this.createShadowRoot();
+        var template = doc.querySelector('#news').content;
+
+        template.querySelector(".title").textContent = this.querySelector('wc-news-title').textContent;
+        template.querySelector("img").src = this.querySelector('wc-news-image').textContent;
+        template.querySelector(".body").textContent = this.querySelector('wc-news-body').textContent;
+
+        root.appendChild(template.cloneNode(true)); // true es recursivo, el elemento y sus hijos
+    }
+
+    var WCButton = document.registerElement('wc-new', {
+        prototype: newsitem
+    });
+})();
+</script>

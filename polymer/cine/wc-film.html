@@ -1,0 +1,70 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<dom-module id="wc-film">
+    <template id="film">
+        <style>
+            .film {
+                box-shadow: 1px 1px 10px #222;
+                padding: 50px;
+                width: 300px;
+                text-align: center;
+                margin: 15px;
+                float: left;
+            }
+            .session-btn {
+                padding: 10px;
+            }
+        </style>
+        <div class="film">
+            <img id="cover" src="{{cover}}">
+            <h1 id="title"><span>{{ title }}</span></h1>
+            <div id="release"><span>Release date: {{ release }}</span></div>
+            <p id="description"><span>Description: {{ description }}</span></p>
+            <div>Code: {{ code }}</div>
+            <button class="session-btn" id="session1" value="18:00">18:00</button>
+            <button class="session-btn" id="session2" value="20:00">20:00</button>
+            <button class="session-btn" id="session3" value="22:00">22:00</button>
+        </div>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: 'wc-film',
+            properties: {
+                title: {
+                    type: String,
+                    value: 'Titulo por defecto'
+                },
+                release: {
+                    type: String,
+                    value: function () {
+                        return new Date().toLocaleDateString();
+                    }
+                },
+                cover: {
+                    type: String,
+                    value: 'https://placeholdit.imgix.net/~text?txtsize=33&bg=0F3D4D&txtclr=000000&w=300&h=150'
+                },
+                description: {
+                    type: String,
+                    value: 'Descripción por defecto'
+                },
+                code: {
+                    type: String,
+                    readOnly: true,
+                    computed: 'getCode(title, session)' // sin espacios entre el nombre de la función y el paréntesis
+                },
+                session: {
+                    type: String,
+                    value: ''
+                }
+            },
+            getCode: function (title,session) {
+                return title.toUpperCase().substring(0,3) + session;
+            },
+            ready: function () {
+
+            }
+        });
+    })();
+    </script>
+</dom-module>

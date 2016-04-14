@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="http://www.polymer-project.org/1.0/components/webcomponentsjs/webcomponents-lite.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button is="wc-button">
+        Botón personalizado
+    </button>
+
+    <script>
+    var btn = Object.create(HTMLButtonElement.prototype);
+    btn.createdCallback = function() {
+        this.addEventListener('click', function () {
+            console.log("Click en botón");
+        })
+    }
+
+    var WCButton = document.registerElement('wc-button', {
+        prototype: btn,
+        extends: 'button'
+    });
+
+
+    </script>
+</body>
+
+</html>

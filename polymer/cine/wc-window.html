@@ -1,0 +1,52 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-ticket.html">
+<dom-module id="wc-window">
+    <template id="window">
+        <style>
+        .window {
+            text-align: center;
+        }
+        
+        #films-wrapper: {
+            box-shadow: 1px 1px 10px #222;
+            padding: 100px;
+            width: 400px;
+            margin: 15px;
+        }
+        </style>
+        <div class="window">
+            <h1> {{name}}</h1>
+            <content></content>
+        </div>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: 'wc-window',
+            properties: {
+                name: {
+                    type: String,
+                    value: 'Ventanilla'
+                }
+            },
+            ready: function() {
+                Polymer.dom(this).querySelectorAll('wc-film').forEach(
+                        function(film) {
+                            film.addEventListener('click', function(evt) {
+                                var source = evt.target;
+                                if (source.value) {
+                                    var ticket = new WCTicket();
+                                    ticket.title = source.title;
+                                    ticket.session = source.value;
+                                    this.parentNode.querySelector('#myk').addTicket(ticket);
+                                }
+                            }.bind(this))
+                        }.bind(this))
+                    // console.log(this.getEffectiveChildren());
+                    // this.getEffectiveChildren().forEach(
+                    //     
+            }
+        });
+    })();
+    </script>
+</dom-module>
