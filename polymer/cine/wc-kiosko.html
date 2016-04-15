@@ -8,7 +8,7 @@
         </style>
         <div class="kiosko">
             <h1 id="name"><span>{{ name }}</span></h1>
-            <div id="ticketList"></div>
+            <div id="ticketList"> {{ticketList}} </div>
         </div>
     </template>
     <script>
@@ -21,10 +21,20 @@
                     type: String,
                     value: 'Kiosko'
                 },
-                ticketList: tickets,
-                addTicket: function (ticket) {
-                    tickets.push(ticket);
+                ticketList: {
+                    type: Array,
+                    value: function() {
+                        return tickets;
+                    }
                 }
+            },
+            addTicket: function(ticket) {
+                tickets.push(ticket);
+                console.log("Kiosko tickets:", tickets);
+                this.$.ticketList.appendChild(ticket);
+                    // this.ticketList = tickets;
+                    // console.log(this.$.ticketList);
+                    // console.log(this.querySelector('#ticketList'));
             }
         });
     })();

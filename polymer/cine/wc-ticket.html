@@ -8,12 +8,14 @@
                 width: 300px;
                 text-align: center;
                 margin: 15px;
+                display: inline-block;
             }
         </style>
         <div class="ticket">
-            <h1 id="title"><span>{{ title }}</span></h1>
-            <h2 id="session"> {{ session }}</h2>
-            <span id="date"> {{ date }}</span>
+            <h1 id="title"><span>Película: {{ title }}</span></h1>
+            <h2 id="session">Sesión: {{ session }}</h2>
+            <div id="date">Fecha de compra: {{ date }}</div>
+            <div id="code">Código de pelicula {{ code }}</div>
         </div>
     </template>
     <script>
@@ -28,10 +30,14 @@
                 date: {
                     type: String,
                     value: function () {
-                        return new Date().toLocaleDateString();
+                        return new Date();
                     }
                 },
                 session: {
+                    type: String,
+                    value: ''
+                },
+                code: {
                     type: String,
                     value: ''
                 }

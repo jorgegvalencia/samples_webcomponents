@@ -1,22 +1,24 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
 <link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-kiosko.html">
 <dom-module id="wc-window">
     <template id="window">
         <style>
         .window {
             text-align: center;
         }
-        
-        #films-wrapper: {
+        #movies: {
             box-shadow: 1px 1px 10px #222;
             padding: 100px;
             width: 400px;
             margin: 15px;
         }
         </style>
-        <div class="window">
+        <div class="window" on-wc-film-session="createTicket">
             <h1> {{name}}</h1>
-            <content></content>
+            <div id="movies">
+                <content></content>
+            </div>
         </div>
     </template>
     <script>
@@ -27,24 +29,35 @@
                 name: {
                     type: String,
                     value: 'Ventanilla'
+                },
+                kiosko: {
+                    type: String
                 }
             },
             ready: function() {
-                Polymer.dom(this).querySelectorAll('wc-film').forEach(
-                        function(film) {
-                            film.addEventListener('click', function(evt) {
-                                var source = evt.target;
-                                if (source.value) {
-                                    var ticket = new WCTicket();
-                                    ticket.title = source.title;
-                                    ticket.session = source.value;
-                                    this.parentNode.querySelector('#myk').addTicket(ticket);
-                                }
-                            }.bind(this))
-                        }.bind(this))
-                    // console.log(this.getEffectiveChildren());
-                    // this.getEffectiveChildren().forEach(
-                    //     
+                // this.listen(this, 'wc-film-session', 'createTicket');
+                // Polymer.dom(this).querySelectorAll('wc-film').forEach(
+                //     function(film) {
+                //         film.addEventListener('click', function(evt) {
+                //             var source = evt.target;
+                //             if (source.value !== "undefined") {
+                //                 var ticket = new WCTicket();
+                //                 ticket.title = source.title;
+                //                 ticket.session = source.value;
+                //                 var kiosko = this.parentNode.querySelector(this.kiosko);
+                //                 kiosko.addTicket(ticket);
+                //             }
+                //         }.bind(this))
+                //     }.bind(this))
+            },
+            createTicket: function(evt) {
+                console.log(evt);
+                var ticket = new WCTicket();
+                ticket.title = evt.detail.title;
+                ticket.session = evt.detail.session;
+                ticket.code = evt.detail.code;
+                // var kiosko = this.parentNode.querySelector(this.kiosko);
+                this.kiosko.addTicket(ticket);
             }
         });
     })();

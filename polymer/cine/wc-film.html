@@ -2,17 +2,19 @@
 <dom-module id="wc-film">
     <template id="film">
         <style>
-            .film {
-                box-shadow: 1px 1px 10px #222;
-                padding: 50px;
-                width: 300px;
-                text-align: center;
-                margin: 15px;
-                float: left;
-            }
-            .session-btn {
-                padding: 10px;
-            }
+        .film {
+            box-shadow: 1px 1px 10px #222;
+            padding: 50px;
+            width: 300px;
+            text-align: center;
+            margin: 15px;
+            display: inline-block;
+            /*float: right;*/
+        }
+        
+        .session-btn {
+            padding: 10px;
+        }
         </style>
         <div class="film">
             <img id="cover" src="{{cover}}">
@@ -20,9 +22,9 @@
             <div id="release"><span>Release date: {{ release }}</span></div>
             <p id="description"><span>Description: {{ description }}</span></p>
             <div>Code: {{ code }}</div>
-            <button class="session-btn" id="session1" value="18:00">18:00</button>
-            <button class="session-btn" id="session2" value="20:00">20:00</button>
-            <button class="session-btn" id="session3" value="22:00">22:00</button>
+            <button class="session-btn" id="session1" on-tap="onBtnTap" value="18:00">18:00</button>
+            <button class="session-btn" id="session2" on-tap="onBtnTap" value="20:00">20:00</button>
+            <button class="session-btn" id="session3" on-tap="onBtnTap" value="22:00">22:00</button>
         </div>
     </template>
     <script>
@@ -36,7 +38,7 @@
                 },
                 release: {
                     type: String,
-                    value: function () {
+                    value: function() {
                         return new Date().toLocaleDateString();
                     }
                 },
@@ -58,11 +60,21 @@
                     value: ''
                 }
             },
-            getCode: function (title,session) {
-                return title.toUpperCase().substring(0,3) + session;
+            onBtnTap: function (evt) {
+                evt.stopPropagation();
+                this.fire('wc-film-session', { title: this.title, code: this.code, session: evt.target.value});
             },
-            ready: function () {
-
+            getCode: function(title, session) {
+                return title.toUpperCase().substring(0, 3) + session;
+            },
+            ready: function() {
+                // this.listen(this.$.session2, 'tap', 'onTap');
+                // this.listen(this.$.session2, 'tap', 'onTap');
+                // console.log(Polymer.dom(this).children.length);
+                // console.log(Polymer.dom(this).getEffectiveChildNodes().length);
+            },
+            detached: function () {
+                // this.unlisten(this.$.session2, 'tap', 'onTap');
             }
         });
     })();
