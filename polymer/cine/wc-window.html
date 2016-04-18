@@ -1,12 +1,14 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
 <link rel="import" href="wc-ticket.html">
 <link rel="import" href="wc-kiosko.html">
+<link rel="import" href="wc-film.html">
 <dom-module id="wc-window">
     <template id="window">
         <style>
         .window {
             text-align: center;
         }
+        
         #movies: {
             box-shadow: 1px 1px 10px #222;
             padding: 100px;
@@ -17,7 +19,10 @@
         <div class="window" on-wc-film-session="createTicket">
             <h1> {{name}}</h1>
             <div id="movies">
-                <content></content>
+                <!-- <content></content> -->
+                <template is="dom-repeat" items="{{films}}" as="film">
+                    <wc-film title="{{film.title}}" description="{{film.description}}"></wc-film> <!-- cover="{{film.cover}}" -->
+                </template>
             </div>
         </div>
     </template>
@@ -32,9 +37,14 @@
                 },
                 kiosko: {
                     type: String
+                },
+                films: {
+                    type: Array
                 }
             },
             ready: function() {
+                // this.films = this.$.films;
+                // console.log(this.films);
                 // this.listen(this, 'wc-film-session', 'createTicket');
                 // Polymer.dom(this).querySelectorAll('wc-film').forEach(
                 //     function(film) {

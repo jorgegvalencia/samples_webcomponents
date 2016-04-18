@@ -1,0 +1,47 @@
+<dom-module id="wc-selector">
+    <template id="selector">
+        <button on-tap="onTap" value="{{key}}">Cambiar cine</button>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: 'wc-selector',
+            properties: {
+                kiosko: {
+                    type: Object,
+                    value: function() {
+                        return {};
+                    }
+                },
+                data: {
+                    type: Array,
+                    notify: true
+                },
+                key: {
+                    type: String
+                },
+                selected: {
+                    type: Number,
+                    value: 0,
+                    notify: true
+                },
+                source: {
+                    type: Object
+                }
+            },
+            ready: function() {
+                this.kiosko = this.$.kiosko;
+                this.data = Polymer.dom(this).children[this.selected][this.key];
+                // console.log(children[].this.key);
+                // this.films = children[this.key].data;
+            },
+            onTap: function(e) {
+                var children = Polymer.dom(this).children;
+                this.selected = (this.selected + 1) % children.length;
+                console.log(children[this.selected][this.key]);
+                this.data = children[this.selected][this.key];
+            }
+        });
+    })();
+    </script>
+</dom-module>

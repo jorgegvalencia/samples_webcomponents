@@ -3,9 +3,16 @@
 <link rel="import" href="wc-window.html">
 <link rel="import" href="wc-ticket.html">
 <link rel="import" href="wc-kiosko.html">
-<dom-module id="wc-text">
-    <template id="text">
-        <wc-window kiosko="{{kiosko}}" name="Ventanilla 1">
+<link rel="import" href="wc-cinema.html">
+<link rel="import" href="wc-selector.html">
+<dom-module id="wc-test">
+    <template id="test">
+        <wc-selector data="{{films}}" key="films">
+            <wc-cinema films="{{films1}}"></wc-cinema>
+            <wc-cinema films="{{films2}}"></wc-cinema>
+        </wc-selector>
+        <wc-window kiosko="{{kiosko}}" films="[[films]]" name="Ventanilla 1"></wc-window>
+        <!-- <wc-window kiosko="{{kiosko}}" name="Ventanilla 1">
             <wc-film title="Mi título 1" description="mi descripcion 1"></wc-film>
             <wc-film title="Mi título 2" description="mi descripcion 2"></wc-film>
             <wc-film title="Mi título 3" description="mi descripcion 3"></wc-film>
@@ -14,23 +21,27 @@
             <wc-film title="Mi título 4" description="mi descripcion 4"></wc-film>
             <wc-film title="Mi título 5" description="mi descripcion 5"></wc-film>
             <wc-film title="Mi título 6" description="mi descripcion 6"></wc-film>
-        </wc-window>
+        </wc-window> -->
         <wc-kiosko id="kiosko"></wc-kiosko>
     </template>
     <script>
     (function() {
         Polymer({
-            is: 'wc-text',
+            is: 'wc-test',
             properties: {
                 kiosko: {
                     type: Object,
-                    value: function () {
+                    value: function() {
                         return {};
                     }
                 }
+                // films: {
+                //     type: Array
+                // },
             },
-            ready: function () {
+            ready: function() {
                 this.kiosko = this.$.kiosko;
+                // this.films = this.films1;
             }
         });
     })();
