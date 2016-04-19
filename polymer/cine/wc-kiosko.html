@@ -4,6 +4,8 @@
         <style>
         .kiosko {
             text-align: center;
+            color: var(--color);
+            background: var(--fondo, blue);
         }
         </style>
         <div class="kiosko">
@@ -32,9 +34,9 @@
                 tickets.push(ticket);
                 console.log("Kiosko tickets:", tickets);
                 this.$.ticketList.appendChild(ticket);
-                    // this.ticketList = tickets;
-                    // console.log(this.$.ticketList);
-                    // console.log(this.querySelector('#ticketList'));
+                // this.ticketList = tickets;
+                // console.log(this.$.ticketList);
+                // console.log(this.querySelector('#ticketList'));
             }
         });
     })();

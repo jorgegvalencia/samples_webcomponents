@@ -9,37 +9,6 @@ wc-window no tiene que procesar en el light dom la configuración de las pelícu
     <script id="myfilms" type="text/javascript" src="films.json"></script>
     <script>
     (function() {
-        // var films = [{
-        //     title: "Los Vengadores",
-        //     description: "description1"
-        // }, {
-        //     title: "titulo2",
-        //     description: "description2"
-        // }, {
-        //     title: "titulo3",
-        //     description: "description3"
-        // }, {
-        //     title: "titulo4",
-        //     description: "description4"
-        // }, {
-        //     title: "titulo5",
-        //     description: "description5"
-        // }, {
-        //     title: "titulo6",
-        //     description: "description6"
-        // }, {
-        //     title: "titulo7",
-        //     description: "description7"
-        // }, {
-        //     title: "titulo8",
-        //     description: "description8"
-        // }, {
-        //     title: "titulo9",
-        //     description: "description9"
-        // }, {
-        //     title: "titulo10",
-        //     description: "description10"
-        // }];
         var films = movies;
         var index = 0;
         Polymer({
@@ -61,14 +30,6 @@ wc-window no tiene que procesar en el light dom la configuración de las pelícu
                 return myfilms;
             },
             ready: function() {
-                // generar array de peliculas
-                // var myfilms = JSON.parse(movies);
-                // var request = new XMLHttpRequest();
-                // request.open("GET", "./films.json", false);
-                // request.send(null);
-                // var my_JSON_object = JSON.parse(request.responseText);
-                // console.log(my_JSON_object);
-
                 var myfilms = this.getMovies(index);
                 this.set('films', myfilms);
                 index++;

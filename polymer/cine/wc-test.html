@@ -7,21 +7,21 @@
 <link rel="import" href="wc-selector.html">
 <dom-module id="wc-test">
     <template id="test">
-        <wc-selector data="{{films}}" key="films">
+        <style>
+        :host {
+            --color: yellow;
+            --fondo: green;
+        }
+        .orange {
+            --color: orange;
+        }
+        </style>
+        <wc-selector class="orange" data="{{films}}" key="films">
             <wc-cinema films="{{films1}}"></wc-cinema>
             <wc-cinema films="{{films2}}"></wc-cinema>
         </wc-selector>
-        <wc-window kiosko="{{kiosko}}" films="[[films]]" name="Ventanilla 1"></wc-window>
-        <!-- <wc-window kiosko="{{kiosko}}" name="Ventanilla 1">
-            <wc-film title="Mi título 1" description="mi descripcion 1"></wc-film>
-            <wc-film title="Mi título 2" description="mi descripcion 2"></wc-film>
-            <wc-film title="Mi título 3" description="mi descripcion 3"></wc-film>
-        </wc-window>
-        <wc-window kiosko="{{kiosko}}" name="Ventanilla 2">
-            <wc-film title="Mi título 4" description="mi descripcion 4"></wc-film>
-            <wc-film title="Mi título 5" description="mi descripcion 5"></wc-film>
-            <wc-film title="Mi título 6" description="mi descripcion 6"></wc-film>
-        </wc-window> -->
+        <button on-tap="changeColor">Cambiar color</button>
+        <wc-window kiosko="{{kiosko}}" films="[[films]]" name="Ventanilla 1" class="grey"></wc-window>
         <wc-kiosko id="kiosko"></wc-kiosko>
     </template>
     <script>
@@ -35,13 +35,14 @@
                         return {};
                     }
                 }
-                // films: {
-                //     type: Array
-                // },
             },
             ready: function() {
                 this.kiosko = this.$.kiosko;
-                // this.films = this.films1;
+            },
+            changeColor: function () {
+                this.customStyle['--color'] = 'orange';
+                this.customStyle['--fondo'] = 'aqua';
+                this.updateStyles();
             }
         });
     })();

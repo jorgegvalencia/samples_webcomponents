@@ -1,5 +1,12 @@
 <dom-module id="wc-selector">
     <template id="selector">
+        <style>
+        button {
+            text-align: center;
+            color: var(--color);
+            background: var(--fondo, blue);
+        }
+        </style>
         <button on-tap="onTap" value="{{key}}">Cambiar cine</button>
     </template>
     <script>
@@ -31,9 +38,9 @@
             },
             ready: function() {
                 this.kiosko = this.$.kiosko;
-                this.data = Polymer.dom(this).children[this.selected][this.key];
-                // console.log(children[].this.key);
-                // this.films = children[this.key].data;
+                this.async(function() {
+                    this.data = Polymer.dom(this).children[this.selected][this.key];
+                }, 500)
             },
             onTap: function(e) {
                 var children = Polymer.dom(this).children;
